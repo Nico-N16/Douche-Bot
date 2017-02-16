@@ -81,7 +81,7 @@ namespace Douche_Bot
                                     {
                                     string botRep = shatter.BotTalk();
 
-                                    writer.WriteLine(":" + _user + "!" + _user + "@" + _user +
+                                    writer.WriteLine(":" + _nick + "!" + _nick + "@" + _nick +
                                      "tmi.twitch.tv PRIVMSG " + _channel + " : " + botRep);
                                      writer.Flush(); 
                                     

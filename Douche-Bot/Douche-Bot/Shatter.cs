@@ -54,7 +54,7 @@ namespace Douche_Bot
         {
             if (inputeLine.Contains(" suce "))
             {
-                return "C'est ta soeur qui suce";
+                return "C'est ta soeur qui suce ¯\\_(ツ)_/¯";
             }
             else
             {

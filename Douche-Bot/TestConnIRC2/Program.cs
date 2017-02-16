@@ -19,10 +19,11 @@ namespace TestConnIRC2
             IRCbot ircBot = new IRCbot(
                 server: "irc.chat.twitch.tv",
                 port: 6667,
-                user: "altha_n16",
+                user: "D0uch3_Bot",
                 nick: "Douche-Bot",
                 channel: "#altha_n16",
-                pass : "oauth:ymm54b9x2zs48ofbx46x2ghxmt4dju"
+                //pass : "oauth:ymm54b9x2zs48ofbx46x2ghxmt4dju"
+                pass: "oauth:05v40d9igfy7qs6f0b2eooczrfbveu"
             );
 
             ircBot.Start();
