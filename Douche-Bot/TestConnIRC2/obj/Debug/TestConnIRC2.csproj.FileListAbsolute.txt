@@ -1,0 +1,8 @@
+C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\TestConnIRC2\bin\Debug\TestConnIRC2.exe.config
+C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\TestConnIRC2\bin\Debug\TestConnIRC2.exe
+C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\TestConnIRC2\bin\Debug\TestConnIRC2.pdb
+C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\TestConnIRC2\bin\Debug\Douche-Bot.dll
+C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\TestConnIRC2\bin\Debug\Douche-Bot.pdb
+C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\TestConnIRC2\obj\Debug\TestConnIRC2.csprojResolveAssemblyReference.cache
+C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\TestConnIRC2\obj\Debug\TestConnIRC2.exe
+C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\TestConnIRC2\obj\Debug\TestConnIRC2.pdb

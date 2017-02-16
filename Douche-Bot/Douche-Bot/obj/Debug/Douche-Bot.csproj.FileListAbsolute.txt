@@ -1,0 +1,5 @@
+C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\Douche-Bot\bin\Debug\Douche-Bot.dll
+C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\Douche-Bot\bin\Debug\Douche-Bot.pdb
+C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\Douche-Bot\obj\Debug\Douche-Bot.csprojResolveAssemblyReference.cache
+C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\Douche-Bot\obj\Debug\Douche-Bot.dll
+C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\Douche-Bot\obj\Debug\Douche-Bot.pdb
