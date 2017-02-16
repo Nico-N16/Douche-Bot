@@ -11,12 +11,7 @@ namespace TestConnIRC2
     {
         static void Main(string[] args)
         {
-            /*
-             botName = "Douche-Bot";
-             port = 6667;
-             server = "irc.chat.twitch.tv";
-            */
-            // infoConnect Bot = new  infoConnect("Douche-Bot", "irc.chat.twitch.tv", "oauth:ymm54b9x2zs48ofbx46x2ghxmt4dju");
+        // infoConnect Bot = new  infoConnect("Douche-Bot", "irc.chat.twitch.tv", "oauth:ymm54b9x2zs48ofbx46x2ghxmt4dju");
 
             // "Douche-Bot", "irc.chat.twitch.tv", "oauth:ymm54b9x2zs48ofbx46x2ghxmt4dju"
 
@@ -26,7 +21,7 @@ namespace TestConnIRC2
                 port: 6667,
                 user: "altha_n16",
                 nick: "Douche-Bot",
-                channel: "#Casual",
+                channel: "#altha_n16",
                 pass : "oauth:ymm54b9x2zs48ofbx46x2ghxmt4dju"
             );
 

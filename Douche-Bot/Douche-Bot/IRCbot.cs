@@ -34,10 +34,13 @@ namespace Douche_Bot
             _maxRetries = maxRetries;
         }
 
+       
+
         public void Start()
         {
             var retry = false;
             var retryCount = 0;
+            bool con = false;
             do
             {
                 try
@@ -47,26 +50,22 @@ namespace Douche_Bot
                     using (var reader = new StreamReader(stream))
                     using (var writer = new StreamWriter(stream))
                     {
-                        //writer.WriteLine("NICK " + _nick);
-                        //writer.WriteLine("NICK " + _user);
+                
                         writer.Write("PASS " + _pass + "\n");
-                        
-                       // writer.WriteLine("PASS " + _pass + " NICK " + _nick);
-                      //  writer.WriteLine("NICK " + _user + " PASS " + _pass);
-
                         writer.Flush();
-                      writer.Write("NICK " + _user + "\n");
+                        writer.Write("NICK " + _user + "\n");
                         writer.Flush();
-
+                       
                         while (true)
                         {
                             string inputLine;
                             while ((inputLine = reader.ReadLine()) != null)
                             {
-                                Console.WriteLine("<- " + inputLine);
+                                Console.WriteLine("¯\\_(o.O)_/¯ " + inputLine);
 
-                                // split the lines sent from the server by spaces (seems to be the easiest way to parse them)
-                                string[] splitInput = inputLine.Split(new Char[] { ' ' });
+                               
+                                Shatter shatter = new Shatter(inputLine);
+                                string[] splitInput = shatter.SplitInput;
 
                                 if (splitInput[0] == "PING")
                                 {
@@ -77,15 +76,42 @@ namespace Douche_Bot
                                     //continue;
                                 }
 
+                                    // vérification si le bot est applé
+                                    if (shatter.BotCall(inputLine) == true)
+                                    {
+                                    string botRep = shatter.BotTalk();
+
+                                    writer.WriteLine(":" + _user + "!" + _user + "@" + _user +
+                                     "tmi.twitch.tv PRIVMSG " + _channel + " : " + botRep);
+                                     writer.Flush(); 
+                                    
+
+
+                                    writer.Flush();
+                                    }
+                                
+
+                                
+                                
+
                                 switch (splitInput[1])
                                 {
                                     case "001":
                                         writer.WriteLine("JOIN " + _channel);
                                         writer.Flush();
+                                        con = true;
                                         break;
+                               
+                                      
+
                                     default:
                                         break;
                                 }
+
+                               /* Console.WriteLine("Test écriture du bot");
+                                writer.Write(":" + _user + "!" + _user + "@" + _user +
+                                    "tmi.twitch.tv PRIVMSG #" + _channel + " :" + " I'M ALIVE");
+                                writer.Flush(); */
                             }
                         }
                     }
