@@ -114,7 +114,33 @@ namespace Douche_Bot
        
         
        
+    
+
+    public bool BadWord(String theChaine)
+    {
+            bool Bad = false;
+        String[] find = new String[] {
+            "nique", "niquer","encule","enculer","enculé", "foutre","batar","batard","bâtard","biatch",
+            "bite","bougnoul","bougnoule","bouffon","bounioul","branleur","branler","couille","couilles",
+            "chiennasse","con","conar","connar","conard","connard","conasse","conase","ducon","merde",
+            "emmerde","emmerder","emmerdeur","emmerdeuse","pute","putain","bordel","fdp","fiotte","garce",
+            "gouine","merdeux","negre",
+        };
+        int longueur = find.Length;
+        // bool isBad = false;
+       // String replace = " ***** ";
+        int i = 0;
+        while( i < longueur) {
+            if (theChaine.Contains(find[i]))
+                {
+                    Bad = true;
+                }
+            i++;
+        }
+        return Bad;
+    }
     }//***
+
 
 }
 
