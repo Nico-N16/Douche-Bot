@@ -36,6 +36,7 @@ namespace Douche_Bot
             _maxRetries = maxRetries;
         }
 
+<<<<<<< HEAD
         public void sendIrcMessage(string message)
         {
             outputStream.WriteLine(message);
@@ -55,12 +56,17 @@ namespace Douche_Bot
        
 
 
+=======
+       
+
+>>>>>>> e03971461f2f0c7c5b319f2211e146ff605bcf46
         public void Start()
         {
 
 
             var retry = false;
             var retryCount = 0;
+            bool con = false;
             do
             {
                 try
@@ -70,17 +76,12 @@ namespace Douche_Bot
                     using (var reader = new StreamReader(stream))
                     using (var writer = new StreamWriter(stream))
                     {
-                        //writer.WriteLine("NICK " + _nick);
-                        //writer.WriteLine("NICK " + _user);
+                
                         writer.Write("PASS " + _pass + "\n");
-                        
-                       // writer.WriteLine("PASS " + _pass + " NICK " + _nick);
-                      //  writer.WriteLine("NICK " + _user + " PASS " + _pass);
-
                         writer.Flush();
-                      writer.Write("NICK " + _user + "\n");
+                        writer.Write("NICK " + _user + "\n");
                         writer.Flush();
-
+                       
                         while (true)
                         {
                            
@@ -88,6 +89,7 @@ namespace Douche_Bot
                             string inputLine;
                             while ((inputLine = reader.ReadLine()) != null)
                             {
+<<<<<<< HEAD
                                 Console.WriteLine("<- " + inputLine);
                                 if (inputLine.Contains("!hello"))
                                 {
@@ -96,6 +98,13 @@ namespace Douche_Bot
                                 }
                                 // split the lines sent from the server by spaces (seems to be the easiest way to parse them)
                                 string[] splitInput = inputLine.Split(new Char[] { ' ' });
+=======
+                                Console.WriteLine("¯\\_(o.O)_/¯ " + inputLine);
+
+                               
+                                Shatter shatter = new Shatter(inputLine);
+                                string[] splitInput = shatter.SplitInput;
+>>>>>>> e03971461f2f0c7c5b319f2211e146ff605bcf46
 
                                 if (splitInput[0] == "PING")
                                 {
@@ -106,15 +115,57 @@ namespace Douche_Bot
                                     //continue;
                                 }
 
+                                    // vérification si le bot est applé
+                                    if (shatter.BotCall(inputLine) == true)
+                                    {
+                                    string botRep = shatter.BotTalk();
+
+                                    writer.WriteLine(":" + _nick + "!" + _nick + "@" + _nick +
+                                     "tmi.twitch.tv PRIVMSG " + _channel + " : " + botRep);
+                                     writer.Flush();
+                                    Console.WriteLine("User : \n"
+                                        + shatter.extractNom(inputLine));
+                                    }
+
+                                    //Ban temporaire si lien trouvé
+                                    if(shatter.censure(inputLine) == true)
+                                    {
+                                    shatter.TempBan(_channel, inputLine);
+
+                                        writer.WriteLine(":" + _nick + "!" + _nick + "@" + _nick +
+                                        "tmi.twitch.tv "+ shatter.TempBan(_channel, inputLine));
+                                        writer.Flush();
+                                        Console.WriteLine("test ban");
+
+                                        writer.WriteLine(":" + _nick + "!" + _nick + "@" + _nick +
+                                        "tmi.twitch.tv PRIVMSG " + _channel + " : " 
+                                        + shatter.extractNom(inputLine) + ", les liens ne sont pas autorisé");
+                                        writer.Flush();
+
+                                    }
+                                
+
+                                
+                                
+
                                 switch (splitInput[1])
                                 {
                                     case "001":
                                         writer.WriteLine("JOIN " + _channel);
                                         writer.Flush();
+                                        con = true;
                                         break;
+                               
+                                      
+
                                     default:
                                         break;
                                 }
+
+                               /* Console.WriteLine("Test écriture du bot");
+                                writer.Write(":" + _user + "!" + _user + "@" + _user +
+                                    "tmi.twitch.tv PRIVMSG #" + _channel + " :" + " I'M ALIVE");
+                                writer.Flush(); */
                             }
                         }
                     }

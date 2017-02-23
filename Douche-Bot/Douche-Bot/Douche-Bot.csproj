@@ -95,7 +95,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="infoConnect.cs" />
+    <Compile Include="Shatter.cs" />
     <Compile Include="IRCbot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
