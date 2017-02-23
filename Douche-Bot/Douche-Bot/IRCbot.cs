@@ -83,11 +83,26 @@ namespace Douche_Bot
 
                                     writer.WriteLine(":" + _nick + "!" + _nick + "@" + _nick +
                                      "tmi.twitch.tv PRIVMSG " + _channel + " : " + botRep);
-                                     writer.Flush(); 
-                                    
+                                     writer.Flush();
+                                    Console.WriteLine("User : \n"
+                                        + shatter.extractNom(inputLine));
+                                    }
 
+                                    //Ban temporaire si lien trouvé
+                                    if(shatter.censure(inputLine) == true)
+                                    {
+                                    shatter.TempBan(_channel, inputLine);
 
-                                    writer.Flush();
+                                        writer.WriteLine(":" + _nick + "!" + _nick + "@" + _nick +
+                                        "tmi.twitch.tv "+ shatter.TempBan(_channel, inputLine));
+                                        writer.Flush();
+                                        Console.WriteLine("test ban");
+
+                                        writer.WriteLine(":" + _nick + "!" + _nick + "@" + _nick +
+                                        "tmi.twitch.tv PRIVMSG " + _channel + " : " 
+                                        + shatter.extractNom(inputLine) + ", les liens ne sont pas autorisé");
+                                        writer.Flush();
+
                                     }
                                 
 

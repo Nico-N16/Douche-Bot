@@ -19,6 +19,7 @@ namespace Douche_Bot
         private string inputeLine;
         private string message;
         private string[] buffer;
+        private string userName;
 
 
         public Shatter(String _inputLine)
@@ -30,14 +31,7 @@ namespace Douche_Bot
 
         public string[] SplitInput { get { return splitInput; } }
 
-        public string extractMessage()
-        {
-            message = "Rien n'as été extrait";
 
-            buffer = inputeLine.Split(':');
-            message = buffer[2];
-            return message;
-        }
         public bool BotCall( string inputeLine)
         {
             if (inputeLine.Contains("?Douche-Bot"))
@@ -50,18 +44,73 @@ namespace Douche_Bot
             }
         }
 
-    public string BotTalk () // ¯\_(ツ)_/¯
+        public string BotTalk () // ¯\_(ツ)_/¯
         {
-            if (inputeLine.Contains(" suce "))
+            //mystring.Contains(myStringToCheck, StringComparison.OrdinalIgnoreCase);
+
+            if (inputeLine.Contains(" suce ") || inputeLine.Contains(" Suce "))
             {
                 return "C'est ta soeur qui suce ¯\\_(ツ)_/¯";
             }
+            
+           /* if(inputeLine.Contains("yolo", StringComparison.OrdinalIgnoreCase))
+            {
+
+            }*/
+            else { return "grr"; }
+
+
+        }
+        public string extractNom(String MsgIn)
+        {
+            /*
+            string input = "User name (sales)";
+            string output = input.Split('(', ')')[1];
+            */
+            string UserName = MsgIn;
+
+            this.userName = UserName.Split('!', '@')[1];
+
+            return userName;
+        }
+
+        public bool censure(String MsgIn)
+        {
+
+          //  Uri uriResult;
+          //  bool result = Uri.TryCreate(MsgIn, UriKind.Absolute, out uriResult)
+          //      && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+
+            if (MsgIn.Contains("http://") ||
+                MsgIn.Contains("https://") ||
+                MsgIn.Contains("www.") ||
+                MsgIn.Contains(".com") ||
+                MsgIn.Contains(".fr") ||
+                MsgIn.Contains(".en") ||
+                MsgIn.Contains(".org") ||
+                MsgIn.Contains(" twitch.tv"))
+              
+            {
+                // return (" PRIVMSG #CHANNEL : .timeout "+extractNom(MsgIn)+" 5");
+                return true;
+            }
+
+            // PRIVMSG #CHANNEL :.timeout USERNAME 600
+            // /timeout <username> [seconds]
+
             else
             {
-                 return "yup ?";
+                return false;
             }
-           
         }
+
+            public string TempBan(string channel, string MsgIn)
+        {
+
+           return (" PRIVMSG "+channel+" : .timeout " + extractNom(MsgIn) + " 5");
+        }
+           
+        
        
         
        
