@@ -59,6 +59,7 @@ namespace Douche_Bot
                         while (true)
                         {
                             string inputLine;
+                            int compteur = 0;
                             while ((inputLine = reader.ReadLine()) != null)
                             {
                                 Console.WriteLine("¯\\_(o.O)_/¯ " + inputLine);
@@ -89,7 +90,7 @@ namespace Douche_Bot
                                     }
 
                                     //Ban temporaire si lien trouvé
-                                    if(shatter.censure(inputLine) == true)
+                                    if(shatter.censure(inputLine) == true && compteur > 7)
                                     {
                                     shatter.TempBan(_channel, inputLine);
 
@@ -123,10 +124,12 @@ namespace Douche_Bot
                                         break;
                                 }
 
-                               /* Console.WriteLine("Test écriture du bot");
-                                writer.Write(":" + _user + "!" + _user + "@" + _user +
-                                    "tmi.twitch.tv PRIVMSG #" + _channel + " :" + " I'M ALIVE");
-                                writer.Flush(); */
+                                /* Console.WriteLine("Test écriture du bot");
+                                 writer.Write(":" + _user + "!" + _user + "@" + _user +
+                                     "tmi.twitch.tv PRIVMSG #" + _channel + " :" + " I'M ALIVE");
+                                 writer.Flush(); */
+
+                                compteur++;
                             }
                         }
                     }
