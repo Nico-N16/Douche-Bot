@@ -20,6 +20,8 @@ namespace Douche_Bot
         private readonly string _channel;
 
         private string _pass;
+        private StreamWriter outputStream;
+        private StreamReader inputStream;
 
         private readonly int _maxRetries;
 
@@ -34,8 +36,29 @@ namespace Douche_Bot
             _maxRetries = maxRetries;
         }
 
+        public void sendIrcMessage(string message)
+        {
+            outputStream.WriteLine(message);
+            outputStream.Flush();
+        }
+
+        public void sendChatMessage(string message)
+        {
+            sendIrcMessage(":" + _user + "!" + _user + "@" + _user + ".tmi.twitch.tv PRIVMSG #" + _channel + ":" + message);
+        }
+
+        public string readMessage()
+        {
+            string message = inputStream.ReadLine();
+            return message;
+        }
+       
+
+
         public void Start()
         {
+
+
             var retry = false;
             var retryCount = 0;
             do
@@ -60,11 +83,17 @@ namespace Douche_Bot
 
                         while (true)
                         {
+                           
+
                             string inputLine;
                             while ((inputLine = reader.ReadLine()) != null)
                             {
                                 Console.WriteLine("<- " + inputLine);
-
+                                if (inputLine.Contains("!hello"))
+                                {
+                                    writer.WriteLine(":" + _user + "!" + _user + "@" + _user + ".tmi.twitch.tv PRIVMSG " + _channel + " :Sacrebleu !");
+                                    writer.Flush();
+                                }
                                 // split the lines sent from the server by spaces (seems to be the easiest way to parse them)
                                 string[] splitInput = inputLine.Split(new Char[] { ' ' });
 
@@ -99,5 +128,9 @@ namespace Douche_Bot
                 }
             } while (retry);
         }
+
+        
+
+
     }
 }

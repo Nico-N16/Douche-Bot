@@ -6,3 +6,16 @@ C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\TestConnIRC2\
 C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\TestConnIRC2\obj\Debug\TestConnIRC2.csprojResolveAssemblyReference.cache
 C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\TestConnIRC2\obj\Debug\TestConnIRC2.exe
 C:\Users\Nicolas\Documents\YnovM1\Twitch-Bot\Douche-Bot\Douche-Bot\TestConnIRC2\obj\Debug\TestConnIRC2.pdb
+C:\Users\Aimeric\Documents\douche-bot\Douche-Bot\Douche-Bot\TestConnIRC2\bin\Debug\TestConnIRC2.exe.config
+C:\Users\Aimeric\Documents\douche-bot\Douche-Bot\Douche-Bot\TestConnIRC2\obj\Debug\TestConnIRC2.exe
+C:\Users\Aimeric\Documents\douche-bot\Douche-Bot\Douche-Bot\TestConnIRC2\obj\Debug\TestConnIRC2.pdb
+C:\Users\Aimeric\Documents\douche-bot\Douche-Bot\Douche-Bot\TestConnIRC2\bin\Debug\TestConnIRC2.exe
+C:\Users\Aimeric\Documents\douche-bot\Douche-Bot\Douche-Bot\TestConnIRC2\bin\Debug\TestConnIRC2.pdb
+C:\Users\Aimeric\Documents\douche-bot\Douche-Bot\Douche-Bot\TestConnIRC2\bin\Debug\Douche-Bot.dll
+C:\Users\Aimeric\Documents\douche-bot\Douche-Bot\Douche-Bot\TestConnIRC2\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Aimeric\Documents\douche-bot\Douche-Bot\Douche-Bot\TestConnIRC2\bin\Debug\TwitchLib.dll
+C:\Users\Aimeric\Documents\douche-bot\Douche-Bot\Douche-Bot\TestConnIRC2\bin\Debug\websocket-sharp.dll
+C:\Users\Aimeric\Documents\douche-bot\Douche-Bot\Douche-Bot\TestConnIRC2\bin\Debug\Douche-Bot.pdb
+C:\Users\Aimeric\Documents\douche-bot\Douche-Bot\Douche-Bot\TestConnIRC2\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Aimeric\Documents\douche-bot\Douche-Bot\Douche-Bot\TestConnIRC2\bin\Debug\TwitchLib.xml
+C:\Users\Aimeric\Documents\douche-bot\Douche-Bot\Douche-Bot\TestConnIRC2\obj\Debug\TestConnIRC2.csprojResolveAssemblyReference.cache
