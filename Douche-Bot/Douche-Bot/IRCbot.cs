@@ -64,6 +64,7 @@ namespace Douche_Bot
                            
 
                             string inputLine;
+                            int compteur = 0;
                             while ((inputLine = reader.ReadLine()) != null)
                             {
 
@@ -76,11 +77,10 @@ namespace Douche_Bot
 
                                 if (splitInput[0] == "PING")
                                 {
-                                    string PongReply = splitInput[1];
-                                    //Console.WriteLine("->PONG " + PongReply);
+                                    string PongReply = splitInput[1];                            
                                     writer.WriteLine("PONG " + PongReply);
                                     writer.Flush();
-                                    //continue;
+                                    
                                 }
 
                                     // vérification si le bot est applé
@@ -109,7 +109,7 @@ namespace Douche_Bot
                                     writer.Flush();
                                 }
                                     //Ban temporaire si lien trouvé
-                                    if(shatter.censure(inputLine) == true)
+                                    if(shatter.censure(inputLine))
                                     {
                                     shatter.TempBan(_channel, inputLine);
 
@@ -123,10 +123,7 @@ namespace Douche_Bot
                                         + shatter.extractNom(inputLine) + ", les liens ne sont pas autorisé");
                                         writer.Flush();
 
-                                    }
-                                
-
-                                
+                                    } 
                                 
 
                                 switch (splitInput[1])
@@ -136,17 +133,14 @@ namespace Douche_Bot
                                         writer.Flush();
                                         con = true;
                                         break;
-                               
-                                      
-
+  
                                     default:
                                         break;
                                 }
 
-                               /* Console.WriteLine("Test écriture du bot");
-                                writer.Write(":" + _user + "!" + _user + "@" + _user +
-                                    "tmi.twitch.tv PRIVMSG #" + _channel + " :" + " I'M ALIVE");
-                                writer.Flush(); */
+                            
+
+                                compteur++;
                             }
                         }
                     }

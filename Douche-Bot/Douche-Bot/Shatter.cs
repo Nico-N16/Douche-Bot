@@ -34,7 +34,7 @@ namespace Douche_Bot
 
         public bool BotCall( string inputeLine)
         {
-            if (inputeLine.Contains("?Douche-Bot"))
+            if (inputeLine.Contains("??"))
             {
                 return true;
             }
@@ -46,65 +46,53 @@ namespace Douche_Bot
 
         public string BotTalk () // ¯\_(ツ)_/¯
         {
-            //mystring.Contains(myStringToCheck, StringComparison.OrdinalIgnoreCase);
 
-            if (inputeLine.Contains(" suce ") || inputeLine.Contains(" Suce "))
+            if (inputeLine.Contains("??"))
             {
-                return "C'est ta soeur qui suce ¯\\_(ツ)_/¯";
+                return "ok";
             }
-            
-           /* if(inputeLine.Contains("yolo", StringComparison.OrdinalIgnoreCase))
-            {
+            else
+            { 
 
-            }*/
-            else { return "grr"; }
-
-
+                return "grr";
+            }
+           
         }
         public string extractNom(String MsgIn)
         {
-            /*
-            string input = "User name (sales)";
-            string output = input.Split('(', ')')[1];
-            */
+            
             string UserName = MsgIn;
 
             this.userName = UserName.Split('!', '@')[1];
 
             return userName;
         }
-
+        // methode permettant de parser chaque mot d'une chaine et verifier si une url existe
         public bool censure(String MsgIn)
         {
-
-          //  Uri uriResult;
-          //  bool result = Uri.TryCreate(MsgIn, UriKind.Absolute, out uriResult)
-          //      && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
-
-            if (MsgIn.Contains("http://") ||
-                MsgIn.Contains("https://") ||
-                MsgIn.Contains("www.") ||
-                MsgIn.Contains(".com") ||
-                MsgIn.Contains(".fr") ||
-                MsgIn.Contains(".en") ||
-                MsgIn.Contains(".org") ||
-                MsgIn.Contains(" twitch.tv"))
-              
+            bool res = false;
+            bool buff = false;
+            string debug;
+            for(int i = 1; i< MsgIn.Split(' ').Length; i++)
             {
-                // return (" PRIVMSG #CHANNEL : .timeout "+extractNom(MsgIn)+" 5");
-                return true;
-            }
+                 buff = Uri.IsWellFormedUriString(
+                         MsgIn.Split(' ')[i].TrimStart(':'),
+                     UriKind.Absolute);
+                 debug = MsgIn.Split(' ')[i];
 
-            // PRIVMSG #CHANNEL :.timeout USERNAME 600
-            // /timeout <username> [seconds]
+                 if (buff == true)   
+                 {
+                     res = true;
+                     return res;
+                 }
+                Console.WriteLine("debug : "+MsgIn.Split(' ')[i].TrimStart(':'));
 
-            else
-            {
-                return false;
             }
+            return res;
+                
         }
 
-            public string TempBan(string channel, string MsgIn)
+        public string TempBan(string channel, string MsgIn)
         {
 
            return (" PRIVMSG "+channel+" : .timeout " + extractNom(MsgIn) + " 5");
