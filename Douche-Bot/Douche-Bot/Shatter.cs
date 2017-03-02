@@ -70,7 +70,7 @@ namespace Douche_Bot
         // methode permettant de parser chaque mot d'une chaine et verifier si une url existe
         public bool censure(String MsgIn)
         {
-            bool res = false;
+            
             bool buff = false;
             string debug;
             for(int i = 1; i< MsgIn.Split(' ').Length; i++)
@@ -82,13 +82,20 @@ namespace Douche_Bot
 
                  if (buff == true)   
                  {
-                     res = true;
-                     return res;
+                     
+                     return buff;
                  }
-                Console.WriteLine("debug : "+MsgIn.Split(' ')[i].TrimStart(':'));
+              //  Console.WriteLine("debug : "+MsgIn.Split(' ')[i].TrimStart(':'));
 
             }
-            return res;
+            if(inputeLine.Contains(".com") || inputeLine.Contains(".fr") || 
+               inputeLine.Contains(".net") || inputeLine.Contains(".biz")  ||
+               inputeLine.Contains(".org") || inputeLine.Contains(".en")
+               )
+            {
+                return false;
+            }
+            return buff;
                 
         }
 
@@ -97,12 +104,35 @@ namespace Douche_Bot
 
            return (" PRIVMSG "+channel+" : .timeout " + extractNom(MsgIn) + " 5");
         }
-           
-        
-       
-        
-       
+
+        public bool BadWord(String theChaine)
+        {
+            bool Bad = false;
+            String[] find = new String[] {
+            "nique", "niquer","encule","enculer","enculé", "foutre","batar","batard","bâtard","biatch",
+            "bite","bougnoul","bougnoule","bouffon","bounioul","branleur","branler","couille","couilles",
+            "chiennasse","con","conar","connar","conard","connard","conasse","conase","ducon","merde",
+            "emmerde","emmerder","emmerdeur","emmerdeuse","pute","putain","bordel","fdp","fiotte","garce",
+            "gouine","merdeux","negre","pd",
+        };
+            int longueur = find.Length;
+            int i = 0;
+
+            while (i < longueur)
+            {
+                if (theChaine.IndexOf(find[i], StringComparison.InvariantCultureIgnoreCase) != -1)
+                {
+                    return true;
+                }
+                i++;
+            }
+            return false;
+        }
     }//***
 
-}
+
+
+}//***
+
+
 

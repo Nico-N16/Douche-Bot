@@ -103,8 +103,22 @@ namespace Douche_Bot
                                         + shatter.extractNom(inputLine) + ", les liens ne sont pas autorisé");
                                         writer.Flush();
 
-                                    } 
-                                
+                                    }
+                                    if (shatter.BadWord(inputLine) == true)
+                                    {
+                                      shatter.TempBan(_channel, inputLine);
+
+                                        writer.WriteLine(":" + _nick + "!" + _nick + "@" + _nick +
+                                        "tmi.twitch.tv " + shatter.TempBan(_channel, inputLine));
+                                        writer.Flush();
+                                        Console.WriteLine("test ban");
+
+                                        writer.WriteLine(":" + _nick + "!" + _nick + "@" + _nick +
+                                        "tmi.twitch.tv PRIVMSG " + _channel + " : Putain"
+                                        + shatter.extractNom(inputLine) + " on surveille son language ");
+                                        writer.Flush();
+                                    }
+
 
                                 switch (splitInput[1])
                                 {
