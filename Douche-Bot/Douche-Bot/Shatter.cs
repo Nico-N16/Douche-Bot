@@ -34,7 +34,7 @@ namespace Douche_Bot
 
         public bool BotCall( string inputeLine)
         {
-            if (inputeLine.Contains("?Douche-Bot"))
+            if (inputeLine.Contains("??"))
             {
                 return true;
             }
@@ -82,19 +82,19 @@ namespace Douche_Bot
             bool res = false;
             bool buff = false;
             string debug;
-            for(int i = 4; i< MsgIn.Split('#', ' ').Length; i++)
+            for(int i = 1; i< MsgIn.Split(' ').Length; i++)
             {
-                /* buff = Uri.IsWellFormedUriString(
-                         MsgIn.Split('!', '@')[i],
+                 buff = Uri.IsWellFormedUriString(
+                         MsgIn.Split(' ')[i].TrimStart(':'),
                      UriKind.Absolute);
-                 debug = MsgIn.Split('!', '@')[i];
+                 debug = MsgIn.Split(' ')[i];
 
                  if (buff == true)   
                  {
                      res = true;
                      return res;
-                 }*/
-                Console.WriteLine("debug : "+MsgIn.Split(':', ' ')[i]);
+                 }
+                Console.WriteLine("debug : "+MsgIn.Split(' ')[i].TrimStart(':'));
 
             }
             return res;
