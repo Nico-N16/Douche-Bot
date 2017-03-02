@@ -99,50 +99,6 @@ namespace Douche_Bot
             }
             return res;
                 
-
-
-
-            /*
-             string test1 = "www.google.com";
-               string test2 = "gateau.yolo";
-                string buff1 = "false";
-                string buff2 = "false";
-
-                if (Uri.IsWellFormedUriString(test1, UriKind.RelativeOrAbsolute))
-                    {
-                    buff1 = "true";
-                   }
-                if (Uri.IsWellFormedUriString(test2, UriKind.RelativeOrAbsolute))
-                    {
-                    buff1 = "true";
-                }
-
-
-                Console.WriteLine("test 1" + buff1 + " // test2 "+ buff2);
-            */
-
-
-            /*if (MsgIn.Contains("http://") ||
-                MsgIn.Contains("https://") ||
-                MsgIn.Contains("www.") ||
-                MsgIn.Contains(".com") ||
-                MsgIn.Contains(".fr") ||
-                MsgIn.Contains(".en") ||
-                MsgIn.Contains(".org") ||
-                MsgIn.Contains(" twitch.tv"))
-           
-            {
-                // return (" PRIVMSG #CHANNEL : .timeout "+extractNom(MsgIn)+" 5");
-                return true;
-            }
-
-            // PRIVMSG #CHANNEL :.timeout USERNAME 600
-            // /timeout <username> [seconds]
-
-            else
-            {
-                return false;
-            }*/
         }
 
         public string TempBan(string channel, string MsgIn)
