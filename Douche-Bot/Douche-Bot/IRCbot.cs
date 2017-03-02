@@ -118,10 +118,7 @@ namespace Douche_Bot
                                         break;
                                 }
 
-                                /* Console.WriteLine("Test écriture du bot");
-                                 writer.Write(":" + _user + "!" + _user + "@" + _user +
-                                     "tmi.twitch.tv PRIVMSG #" + _channel + " :" + " I'M ALIVE");
-                                 writer.Flush(); */
+                            
 
                                 compteur++;
                             }

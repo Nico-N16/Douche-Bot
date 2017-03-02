@@ -46,30 +46,21 @@ namespace Douche_Bot
 
         public string BotTalk () // ¯\_(ツ)_/¯
         {
-            //mystring.Contains(myStringToCheck, StringComparison.OrdinalIgnoreCase);
 
-            if (inputeLine.Contains(" suce ") || inputeLine.Contains(" Suce "))
+            if (inputeLine.Contains("??"))
             {
-                return "C'est ta soeur qui suce ¯\\_(ツ)_/¯";
+                return "ok";
             }
-            
-           /* if(inputeLine.Contains("yolo", StringComparison.OrdinalIgnoreCase))
-            {
+            else
+            { 
 
-            }*/
-            else {
-    
                 return "grr";
             }
-
-
+           
         }
         public string extractNom(String MsgIn)
         {
-            /*
-            string input = "User name (sales)";
-            string output = input.Split('(', ')')[1];
-            */
+            
             string UserName = MsgIn;
 
             this.userName = UserName.Split('!', '@')[1];
