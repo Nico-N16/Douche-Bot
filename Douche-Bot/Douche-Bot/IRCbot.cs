@@ -36,30 +36,7 @@ namespace Douche_Bot
             _maxRetries = maxRetries;
         }
 
-<<<<<<< HEAD
-        public void sendIrcMessage(string message)
-        {
-            outputStream.WriteLine(message);
-            outputStream.Flush();
-        }
 
-        public void sendChatMessage(string message)
-        {
-            sendIrcMessage(":" + _user + "!" + _user + "@" + _user + ".tmi.twitch.tv PRIVMSG #" + _channel + ":" + message);
-        }
-
-        public string readMessage()
-        {
-            string message = inputStream.ReadLine();
-            return message;
-        }
-       
-
-
-=======
-       
-
->>>>>>> e03971461f2f0c7c5b319f2211e146ff605bcf46
         public void Start()
         {
 
@@ -89,22 +66,13 @@ namespace Douche_Bot
                             string inputLine;
                             while ((inputLine = reader.ReadLine()) != null)
                             {
-<<<<<<< HEAD
-                                Console.WriteLine("<- " + inputLine);
-                                if (inputLine.Contains("!hello"))
-                                {
-                                    writer.WriteLine(":" + _user + "!" + _user + "@" + _user + ".tmi.twitch.tv PRIVMSG " + _channel + " :Sacrebleu !");
-                                    writer.Flush();
-                                }
-                                // split the lines sent from the server by spaces (seems to be the easiest way to parse them)
-                                string[] splitInput = inputLine.Split(new Char[] { ' ' });
-=======
+
                                 Console.WriteLine("¯\\_(o.O)_/¯ " + inputLine);
 
                                
                                 Shatter shatter = new Shatter(inputLine);
                                 string[] splitInput = shatter.SplitInput;
->>>>>>> e03971461f2f0c7c5b319f2211e146ff605bcf46
+
 
                                 if (splitInput[0] == "PING")
                                 {
@@ -126,7 +94,20 @@ namespace Douche_Bot
                                     Console.WriteLine("User : \n"
                                         + shatter.extractNom(inputLine));
                                     }
+                                if (shatter.BadWord(inputLine) == true)
+                                {
+                                    shatter.TempBan(_channel, inputLine);
 
+                                    writer.WriteLine(":" + _nick + "!" + _nick + "@" + _nick +
+                                    "tmi.twitch.tv " + shatter.TempBan(_channel, inputLine));
+                                    writer.Flush();
+                                    Console.WriteLine("test ban");
+
+                                    writer.WriteLine(":" + _nick + "!" + _nick + "@" + _nick +
+                                    "tmi.twitch.tv PRIVMSG " + _channel + " : "
+                                    + shatter.extractNom(inputLine) + ", les insulteeeees Bordel ! ");
+                                    writer.Flush();
+                                }
                                     //Ban temporaire si lien trouvé
                                     if(shatter.censure(inputLine) == true)
                                     {

@@ -124,20 +124,22 @@ namespace Douche_Bot
             "bite","bougnoul","bougnoule","bouffon","bounioul","branleur","branler","couille","couilles",
             "chiennasse","con","conar","connar","conard","connard","conasse","conase","ducon","merde",
             "emmerde","emmerder","emmerdeur","emmerdeuse","pute","putain","bordel","fdp","fiotte","garce",
-            "gouine","merdeux","negre",
+            "gouine","merdeux","negre","pd",
         };
         int longueur = find.Length;
         // bool isBad = false;
        // String replace = " ***** ";
         int i = 0;
+           
         while( i < longueur) {
-            if (theChaine.Contains(find[i]))
+            if ( theChaine.IndexOf(find[i],StringComparison.InvariantCultureIgnoreCase)!=-1)
+                    //theNewChaine.Contains(find[i]))
                 {
-                    Bad = true;
+                   return  true;
                 }
             i++;
         }
-        return Bad;
+        return false;
     }
     }//***
 
