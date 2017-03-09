@@ -5,8 +5,15 @@ using System.Threading;
 
 namespace Douche_Bot
 {
+
+    
     public class IRCbot
     {
+       
+        private const int TestReaction = 1;
+        private const int PTimeOut = 2;
+        private const int MsgPhrase = 3;
+        private const int MsgInsultes = 4;
         // server to connect to (edit at will)
         private readonly string _server;
         // server port (6667 by default)
@@ -22,8 +29,10 @@ namespace Douche_Bot
         private string _pass;
 
         private readonly int _maxRetries;
+        private Speaker speak;
 
-        public IRCbot(string server, int port, string user, string nick, string channel,string pass, int maxRetries = 3)
+        public IRCbot(string server, int port, string user, string nick, 
+            string channel,string pass, int maxRetries = 3)
         {
             _server = server;
             _port = port;
@@ -32,6 +41,9 @@ namespace Douche_Bot
             _channel = channel;
             _pass = pass;
             _maxRetries = maxRetries;
+
+            speak = new Speaker( server,  port,  user,  nick, channel,  pass);
+
         }
 
        
@@ -40,7 +52,6 @@ namespace Douche_Bot
         {
             var retry = false;
             var retryCount = 0;
-            bool con = false;
             do
             {
                 try
@@ -50,7 +61,7 @@ namespace Douche_Bot
                     using (var reader = new StreamReader(stream))
                     using (var writer = new StreamWriter(stream))
                     {
-                
+                        //Connexion
                         writer.Write("PASS " + _pass + "\n");
                         writer.Flush();
                         writer.Write("NICK " + _user + "\n");
@@ -79,44 +90,31 @@ namespace Douche_Bot
                                     // vérification si le bot est applé
                                     if (shatter.BotCall(inputLine) == true)
                                     {
-                                    string botRep = shatter.BotTalk();
-
-                                    writer.WriteLine(":" + _nick + "!" + _nick + "@" + _nick +
-                                     "tmi.twitch.tv PRIVMSG " + _channel + " : " + botRep);
-                                     writer.Flush();
-                                    Console.WriteLine("User : \n"
-                                        + shatter.extractNom(inputLine));
+                                    writer.WriteLine(speak.CreatMsg(inputLine, TestReaction));
+                                     writer.Flush();                              
                                     }
 
                                     //Ban temporaire si lien trouvé
                                     if(shatter.censure(inputLine))
                                     {
-                                    shatter.TempBan(_channel, inputLine);
-
-                                        writer.WriteLine(":" + _nick + "!" + _nick + "@" + _nick +
-                                        "tmi.twitch.tv "+ shatter.TempBan(_channel, inputLine));
-                                        writer.Flush();
-                                        Console.WriteLine("test ban");
-
-                                        writer.WriteLine(":" + _nick + "!" + _nick + "@" + _nick +
-                                        "tmi.twitch.tv PRIVMSG " + _channel + " : " 
-                                        + shatter.extractNom(inputLine) + ", les liens ne sont pas autorisé");
-                                        writer.Flush();
+                                    
+                                    // cmd de ban
+                                    writer.WriteLine(speak.CreatMsg(inputLine, PTimeOut));
+                                    writer.Flush();
+                                    //msg de ban
+                                    writer.WriteLine(speak.CreatMsg(inputLine, MsgPhrase));
+                                    writer.Flush();
 
                                     }
                                     if (shatter.BadWord(inputLine) == true)
                                     {
                                       shatter.TempBan(_channel, inputLine);
-
-                                        writer.WriteLine(":" + _nick + "!" + _nick + "@" + _nick +
-                                        "tmi.twitch.tv " + shatter.TempBan(_channel, inputLine));
-                                        writer.Flush();
-                                        Console.WriteLine("test ban");
-
-                                        writer.WriteLine(":" + _nick + "!" + _nick + "@" + _nick +
-                                        "tmi.twitch.tv PRIVMSG " + _channel + " : Putain"
-                                        + shatter.extractNom(inputLine) + " on surveille son language ");
-                                        writer.Flush();
+                                    //cmd ban
+                                    writer.WriteLine(speak.CreatMsg(inputLine, PTimeOut));
+                                    writer.Flush();
+                                    //message ban
+                                   writer.WriteLine(speak.CreatMsg(inputLine, MsgInsultes));
+                                    writer.Flush();
                                     }
 
 

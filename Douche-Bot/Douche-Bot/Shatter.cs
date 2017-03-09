@@ -29,6 +29,8 @@ namespace Douche_Bot
             inputeLine = _inputLine;
         }
 
+        public Shatter() { }
+
         public string[] SplitInput { get { return splitInput; } }
 
 
@@ -43,8 +45,7 @@ namespace Douche_Bot
                 return false;
             }
         }
-
-        public string BotTalk () // ¯\_(ツ)_/¯
+        [Obsolete] public string BotTalk () // ¯\_(ツ)_/¯
         {
 
             if (inputeLine.Contains("??"))
