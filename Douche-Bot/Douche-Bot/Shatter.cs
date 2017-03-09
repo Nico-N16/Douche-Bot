@@ -91,10 +91,11 @@ namespace Douche_Bot
             }
             if(inputeLine.Contains(".com") || inputeLine.Contains(".fr") || 
                inputeLine.Contains(".net") || inputeLine.Contains(".biz")  ||
-               inputeLine.Contains(".org") || inputeLine.Contains(".en")
+               inputeLine.Contains(".org") || inputeLine.Contains(".en") ||
+                inputeLine.Contains("www.")
                )
             {
-                return false;
+                return true;
             }
             return buff;
                 

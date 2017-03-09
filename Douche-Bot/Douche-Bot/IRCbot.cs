@@ -123,7 +123,6 @@ namespace Douche_Bot
                                     case "001":
                                         writer.WriteLine("JOIN " + _channel);
                                         writer.Flush();
-                                        con = true;
                                         break;
   
                                     default:
