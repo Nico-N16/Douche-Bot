@@ -88,7 +88,7 @@ namespace Douche_Bot
                                 }
 
                                     // vérification si le bot est applé
-                                    if (shatter.BotCall(inputLine) == true)
+                                    if (speak.BotCall(inputLine) == true)
                                     {
                                     writer.WriteLine(speak.CreatMsg(inputLine, TestReaction));
                                      writer.Flush();                              
@@ -106,7 +106,8 @@ namespace Douche_Bot
                                     writer.Flush();
 
                                     }
-                                    if (shatter.BadWord(inputLine) == true)
+                                //Ban temporaire si insulte trouvé
+                                if (shatter.BadWord(inputLine) == true)
                                     {
                                       shatter.TempBan(_channel, inputLine);
                                     //cmd ban
@@ -116,7 +117,7 @@ namespace Douche_Bot
                                    writer.WriteLine(speak.CreatMsg(inputLine, MsgInsultes));
                                     writer.Flush();
                                     }
-
+                                    //TODO : ecrivez votre code ici pour ajouter des fonctionnalité 
 
                                 switch (splitInput[1])
                                 {

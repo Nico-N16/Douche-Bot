@@ -47,7 +47,7 @@ namespace Douche_Bot
         ":" + _nick + "!" + _nick + "@" + _nick +
                                      "tmi.twitch.tv PRIVMSG " + _channel + " : " + botRep
         */
-        private string BotTalk(string inputeLine) // ¯\_(ツ)_/¯
+        public string BotTalk(string inputeLine) // ¯\_(ツ)_/¯
         {
 
             if (inputeLine.Contains("??"))
@@ -60,6 +60,17 @@ namespace Douche_Bot
                 return "grr";
             }
 
+        }
+        public bool BotCall(string inputeLine)
+        {
+            if (inputeLine.Contains("??"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         // 0= test, 1=liens, 2=insultes
